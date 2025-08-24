@@ -120,3 +120,6 @@ C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\obj\Debug\net9.0\
 C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\obj\Debug\net9.0\veiculos.pdb
 C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\obj\Debug\net9.0\veiculos.genruntimeconfig.cache
 C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\obj\Debug\net9.0\ref\veiculos.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

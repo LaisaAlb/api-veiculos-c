@@ -8,9 +8,13 @@ using veiculosApiApi.Infraestrutura.DB;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers(); 
+builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAdminService, AdminService>();
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DbContexto>(options =>
 {
@@ -21,6 +25,10 @@ builder.Services.AddDbContext<DbContexto>(options =>
 });
 
 var app = builder.Build();
+
+app.UseSwagger();
+
+app.UseSwaggerUI();
 
 app.MapControllers();
 
