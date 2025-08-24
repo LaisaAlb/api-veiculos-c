@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using veiculos.Dominio.ModelViews;
 using veiculosApi;
 using veiculosApi.Dominio.Interfaces.IAdminService;
 using veiculosApi.Dominio.Servicos;
@@ -32,7 +33,7 @@ app.UseSwaggerUI();
 
 app.MapControllers();
 
-app.MapGet("/", () => "Hello World");
+app.MapGet("/", () => Results.Json(new Home()));
 
 app.MapPost("/login", ([FromBody]LoginDTO loginDTO, IAdminService adminService) =>
 {
