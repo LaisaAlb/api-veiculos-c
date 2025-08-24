@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using veiculos.Dominio.DTOs.VeiculoDTOs;
@@ -35,7 +36,7 @@ app.MapControllers();
 #endregion
 
 #region Home
-app.MapGet("/", () => Results.Json(new Home()));
+app.MapGet("/", () => Results.Json(new Home())).WithTags("Home");
 #endregion
 
 #region Admin
@@ -45,7 +46,7 @@ app.MapPost("/admin/login", ([FromBody] LoginDTO loginDTO, IAdminService adminSe
         return Results.Ok("Login com sucesso");
     else
         return Results.Unauthorized();
-});
+}).WithTags("Administradores");
 #endregion
 
 #region Veiculos
@@ -61,14 +62,23 @@ app.MapPost("/veiculos", ([FromBody] VeiculoDTO veiculoDTO, IVeiculoService veic
     veiculoService.Incluir(veiculo);
 
     return Results.Created($"/veiculo/{veiculo.Id}", veiculo);
-});
+}).WithTags("Veículos");
 
-app.MapGet("/veiculos", ([FromQuery] int? pagina,IVeiculoService veiculoService ) =>
+app.MapGet("/veiculos", ([FromQuery] int? pagina, IVeiculoService veiculoService) =>
 {
     var veiculos = veiculoService.Todos(pagina);
 
     return Results.Ok(veiculos);
-});
+}).WithTags("Veículos");
+
+app.MapGet("/veiculos/{id}", ([FromRoute] int id,IVeiculoService veiculoService ) =>
+{
+    var veiculo = veiculoService.BuscarPorId(id);
+
+    if (veiculo == null) return Results.NotFound();
+
+    return Results.Ok(veiculo);
+}).WithTags("Veículos");
 #endregion
 
 #region App()
