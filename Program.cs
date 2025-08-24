@@ -1,17 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using veiculos.Dominio.DTOs.VeiculoDTOs;
 using veiculos.Dominio.ModelViews;
 using veiculosApi;
+using veiculosApi.Dominio.Entidades;
 using veiculosApi.Dominio.Interfaces.IAdminService;
 using veiculosApi.Dominio.Servicos;
 using veiculosApi.DTOs;
 using veiculosApiApi.Infraestrutura.DB;
 
+#region Builder
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IVeiculoService, VeiculoService>();
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -27,21 +31,43 @@ builder.Services.AddDbContext<DbContexto>(options =>
 
 var app = builder.Build();
 
-app.UseSwagger();
-
-app.UseSwaggerUI();
-
 app.MapControllers();
+#endregion
 
+#region Home
 app.MapGet("/", () => Results.Json(new Home()));
+#endregion
 
-app.MapPost("/login", ([FromBody]LoginDTO loginDTO, IAdminService adminService) =>
+#region Admin
+app.MapPost("/admin/login", ([FromBody] LoginDTO loginDTO, IAdminService adminService) =>
 {
     if (adminService.Login(loginDTO) != null)
         return Results.Ok("Login com sucesso");
     else
         return Results.Unauthorized();
 });
+#endregion
+
+#region Veiculos
+app.MapPost("/veiculos", ([FromBody] VeiculoDTO veiculoDTO, IVeiculoService veiculoService) =>
+{
+    var veiculo = new Veiculo
+    {
+        Nome = veiculoDTO.Nome,
+        Marca = veiculoDTO.Marca,
+        Ano = veiculoDTO.Ano,
+    };
+
+    veiculoService.Incluir(veiculo);
+
+    return Results.Created($"/veiculo/{veiculo.Id}", veiculo);
+});
+#endregion
+
+#region App()
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.Run();
+#endregion
 
