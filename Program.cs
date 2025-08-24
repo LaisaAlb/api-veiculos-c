@@ -71,12 +71,26 @@ app.MapGet("/veiculos", ([FromQuery] int? pagina, IVeiculoService veiculoService
     return Results.Ok(veiculos);
 }).WithTags("Veículos");
 
-app.MapGet("/veiculos/{id}", ([FromRoute] int id,IVeiculoService veiculoService ) =>
+app.MapGet("/veiculos/{id}", ([FromRoute] int id, IVeiculoService veiculoService) =>
 {
     var veiculo = veiculoService.BuscarPorId(id);
 
     if (veiculo == null) return Results.NotFound();
 
+    return Results.Ok(veiculo);
+}).WithTags("Veículos");
+
+app.MapPut("/veiculos/{id}", ([FromRoute] int id, VeiculoDTO veiculoDTO,  IVeiculoService veiculoService ) =>
+{
+    var veiculo = veiculoService.BuscarPorId(id);
+    if (veiculo == null) return Results.NotFound();
+
+    veiculo.Nome = veiculoDTO.Nome;
+    veiculo.Marca = veiculoDTO.Marca;
+    veiculo.Ano = veiculoDTO.Ano;
+
+    veiculoService.Atualizar(veiculo);
+    
     return Results.Ok(veiculo);
 }).WithTags("Veículos");
 #endregion
