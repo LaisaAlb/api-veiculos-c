@@ -1,0 +1,15 @@
+using veiculosApi.Dominio.Entidades;
+using veiculosApi.DTOs;
+
+namespace veiculosApi.Dominio.Interfaces.IAdminService;
+
+public interface IVeiculoService
+{
+    List<Veiculo> Todos(int pagina = 1, string? nome = null, string? marca = null);
+    Veiculo? BuscarPorId(int id);
+    void Incluir(Veiculo veiculo);
+    void Atualizar(Veiculo veiculo);
+    void Apagar(Veiculo veiculo);
+
+}
+
