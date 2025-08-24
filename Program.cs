@@ -62,6 +62,13 @@ app.MapPost("/veiculos", ([FromBody] VeiculoDTO veiculoDTO, IVeiculoService veic
 
     return Results.Created($"/veiculo/{veiculo.Id}", veiculo);
 });
+
+app.MapGet("/veiculos", ([FromQuery] int? pagina,IVeiculoService veiculoService ) =>
+{
+    var veiculos = veiculoService.Todos(pagina);
+
+    return Results.Ok(veiculos);
+});
 #endregion
 
 #region App()
