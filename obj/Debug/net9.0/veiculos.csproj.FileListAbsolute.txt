@@ -123,3 +123,11 @@ C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\obj\Debug\net9.0\
 C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Dell\OneDrive - Educacional\Laísa\Cursos\c#\veiculos\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
