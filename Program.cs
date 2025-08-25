@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using veiculos;
 using veiculos.Dominio.DTOs.VeiculoDTOs;
+using veiculos.Dominio.Enuns;
 using veiculos.Dominio.ModelViews;
 using veiculosApi;
 using veiculosApi.Dominio.Entidades;
@@ -47,6 +48,71 @@ app.MapPost("/admin/login", ([FromBody] LoginDTO loginDTO, IAdminService adminSe
         return Results.Ok("Login com sucesso");
     else
         return Results.Unauthorized();
+}).WithTags("Administradores");
+
+app.MapGet("/admin", ([FromQuery] int? pagina, IAdminService adminService) =>
+{
+    var adms = new List<AdminModelView>();
+    var admin = adminService.Todos(pagina);
+    foreach(var adm in admin){
+        adms.Add(new AdminModelView
+        {
+            Id = adm.Id,
+            Email = adm.Email,
+            Perfil = adm.Perfil
+        });
+    }
+    return Results.Ok(adms);
+}).WithTags("Administradores");
+
+app.MapGet("/admin/{id}", ([FromRoute] int id, IAdminService adminService) =>
+{
+    var admin = adminService.BuscarPorId(id);
+
+    if (admin == null) return Results.NotFound();
+
+    return Results.Ok(new AdminModelView
+    {
+        Id = admin.Id,
+        Email = admin.Email,
+        Perfil = admin.Perfil
+    });
+}).WithTags("Administradores");
+
+app.MapPost("/admin", ([FromBody] AdminDTO adminDTO, IAdminService adminService) =>
+{
+    var validacao = new ErrosDeValidacao
+    {
+        Mensagens = new List<string>()
+    };
+
+    if (string.IsNullOrEmpty(adminDTO.Email))
+        validacao.Mensagens.Add("Email não pode ser vazio");
+
+    if (string.IsNullOrEmpty(adminDTO.Senha))
+        validacao.Mensagens.Add("Senha não pode ser vazia");
+
+    if (adminDTO.Perfil == null)
+        validacao.Mensagens.Add("Perfil não pode ser vazio");
+
+    if (validacao.Mensagens.Count > 0)
+        return Results.BadRequest(validacao);
+
+    var admin = new Admin
+    {
+        Email = adminDTO.Email,
+        Senha = adminDTO.Senha,
+        Perfil = adminDTO.Perfil.ToString() ?? Perfil.Editor.ToString()
+    };
+    adminService.Incluir(admin);
+
+    return Results.Created($"/admin/{admin.Id}", new AdminModelView
+    {
+        Id = admin.Id,
+        Email = admin.Email,
+        Perfil = admin.Perfil
+    });
+
 }).WithTags("Administradores");
 #endregion
 
