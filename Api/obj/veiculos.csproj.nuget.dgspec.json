@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\Api\\veiculos.csproj": {}
+    "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\api\\veiculos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\Api\\veiculos.csproj": {
+    "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\api\\veiculos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\Api\\veiculos.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\api\\veiculos.csproj",
         "projectName": "veiculos",
-        "projectPath": "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\Api\\veiculos.csproj",
+        "projectPath": "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\api\\veiculos.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\Api\\obj\\",
+        "outputPath": "C:\\Users\\Dell\\OneDrive - Educacional\\Laísa\\Cursos\\c#\\veiculos\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
